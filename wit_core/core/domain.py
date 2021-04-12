@@ -26,12 +26,16 @@ def match_domain(intent_properties):
 def prepare_resource(wit_response: dict) -> dict:
     resource: dict = {"resource": {"latest_message": {}}}
 
-    resource["resource"]["latest_message"]["text"] = wit_response["text"]
-    resource["resource"]["latest_message"]["intents"] = wit_response["intents"]
-    resource["resource"]["entities"] = wit_response["entities"]
-    resource["resource"]["traits"] = wit_response["traits"]
+    (resource["resource"]
+        ["latest_message"]["text"]) = wit_response["text"]
+    (resource["resource"]
+        ["latest_message"]["intents"]) = wit_response["intents"]
+    (resource["resource"]
+        ["latest_message"]["entities"]) = wit_response["entities"]
+    (resource["resource"]
+        ["latest_message"]["traits"]) = wit_response["traits"]
 
-    return resource_interface(resource)
+    return resource
 
 
 @dot_notation
@@ -56,7 +60,8 @@ def get_intent(resource: dict) -> dict:
 def get_entity(resource: dict):
     @dot_notation
     def execute(entity_name: str) -> dict:
-        return resource["resource"]["entities"][entity_name][0]
+        return (resource["resource"]["latest_message"]
+                ["entities"][entity_name][0])
 
     return execute
 
@@ -64,7 +69,7 @@ def get_entity(resource: dict):
 def get_trait(resource: dict):
     @dot_notation
     def execute(trait_name: str) -> dict:
-        return resource["resource"]["traits"][trait_name][0]
+        return resource["resource"]["latest_message"]["traits"][trait_name][0]
 
     return execute
 

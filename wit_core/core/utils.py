@@ -4,21 +4,6 @@ from ..decorators import dot_notation
 
 
 @dot_notation
-def extract_wit_response(wit_response: dict) -> dict:
-    text: str = wit_response["text"]
-    intent: str = wit_response["intents"][0]["name"]
-    entities: list = wit_response["entities"]
-    traits: dict = wit_response["traits"]
-
-    return {
-        "text": text,
-        "intent": intent,
-        "entities": entities,
-        "traits": traits
-    }
-
-
-@dot_notation
 def load_yaml(file: str) -> dict:
     file = open(file, 'r')
     return yaml.load(file, Loader=yaml.FullLoader)

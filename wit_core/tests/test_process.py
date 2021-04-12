@@ -1,7 +1,9 @@
 import pytest
 
 
-from wit_core.core.process import process_intent, execute_action_function, execute_template_function, process_domain
+from wit_core.core.process import process_intent, process_domain
+from wit_core.actions.actions import execute_action_function
+from wit_core.templates.templates import execute_template_function
 from wit_core.core.domain import prepare_resource
 
 from . import utilities

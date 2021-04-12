@@ -2,7 +2,7 @@ import pytest
 
 
 from wit_core.core.process import process_intent, execute_action_function, execute_template_function, process_domain
-from wit_core.core.domain import search_intent, prepare_resource
+from wit_core.core.domain import prepare_resource
 
 from . import utilities
 

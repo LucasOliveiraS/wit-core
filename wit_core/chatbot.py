@@ -17,7 +17,7 @@ def get_user_input(message, access_token=os.getenv("ACCESS_TOKEN")):
     response = wit_client.message(message)
     if not response['intents']:
         raise Exception(
-            'No intents were found for the question: '
+            "No intents were found for the question: "
             + message)
 
     return utils.rename_entities_keys(response)

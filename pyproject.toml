@@ -19,6 +19,8 @@ PyYAML = "^5.4.1"
 click = "^7.1.2"
 wit = "^6.0.0"
 python-dotenv = "^0.17.0"
+fastapi = "^0.63.0"
+uvicorn = "^0.13.4"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.3"

@@ -29,12 +29,12 @@ greet:
     response: 
         text: "Hello, there!"
 
-temperature_get
+temperature_set:
     action: custom_action
     response:
-        text: "The temperature today is {action_return}"
+        text: "The temperature was changed to {action_return}"
 
-temperature_set
+order_pizza:
     action: custom_action
     response:
         template: custom_template

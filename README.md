@@ -53,7 +53,7 @@ def custom_action(resource):
 
 The **resource** parameter allows accessing the properties of the wit.ai response.
 
-#### **Resource properties**
+#### **Resource properties:**
 
 #### `get_latest_message()`
 
@@ -92,37 +92,21 @@ def custom_template(action_return):
 
 ## Command Line Interface
 
-### **wit-core init**
+### `wit-core init`
 
 Creates the directory structure.
 
-```bash
-wit-core init
-```
-
-### **wit-core shell**
+### `wit-core shell`
 
 Loads the domain and allows interaction with the chatbot.
 
-```bash
-wit-core shell
-```
-
-### **wit-core http-server**
+### `wit-core http-server`
 
 Creates a http server that can be used for custom integrations. They provide a URL where you can post messages.
 
-```bash
-wit-core http-server
-```
-
-### **wit-core websocket-server**
+### `wit-core websocket-server`
 
 Create a websocket server for real-time interaction with the chatbot. They provide an endpoint where you can send messages.
-
-```bash
-wit-core websocket-server
-```
 
 ## How to use
 

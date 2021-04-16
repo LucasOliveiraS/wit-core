@@ -14,10 +14,15 @@ def cli():
     pass
 
 
-cli.add_command(shell)
 cli.add_command(init)
+cli.add_command(shell)
 cli.add_command(http_server)
 cli.add_command(websocket_server)
 
-if __name__ == '__main__':
+
+def main():
     cli()
+
+
+if __name__ == '__main__':
+    main()

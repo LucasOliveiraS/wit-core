@@ -11,7 +11,7 @@ from . import utils
 def process_intent(user_input: str) -> str:
     wit_response = get_user_input(user_input)
 
-    domain = utils.load_yaml(Path("wit_core/") / "domain.yaml")
+    domain = utils.load_yaml(Path.cwd() / "domain.yaml")
 
     intent_properties = search_intent(
         wit_response["intents"][0]["name"], domain)

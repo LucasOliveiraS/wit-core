@@ -1,8 +1,8 @@
 # wit-core
 
-wit-core is a message processor for wit.ai.
+wit-core is a message processor for [wit.ai](wit.ai)
 
-Organize your intents by defining actions and responses.
+Handle your intents by defining actions and responses.
 
 ## Getting Started
 

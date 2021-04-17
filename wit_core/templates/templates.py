@@ -7,7 +7,7 @@ def execute_template_function(func, arg=None) -> Any:
     action_module = load_module("templates", "templates.py")
 
     if getattr(action_module, func, None) is None:
-        raise AttributeError("Not found action to execute")
+        raise AttributeError("Not found template to execute")
 
     try:
         if not arg:

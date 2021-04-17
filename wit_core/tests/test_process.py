@@ -1,6 +1,5 @@
 import pytest
 
-
 from wit_core.core.process import process_intent, process_domain
 from wit_core.actions.actions import execute_action_function
 from wit_core.templates.templates import execute_template_function
@@ -10,23 +9,25 @@ from . import utilities
 
 
 def test_execute_action_function(mocker):
-    teste = mocker.patch("wit_core.core.process.execute_action_function", return_value="result action")
+    action = mocker.patch("wit_core.actions.actions.execute_action_function", return_value="result action")
 
-    assert teste("action_default") == "result action"
+    assert action("action_default") == "result action"
 
 
-def test_execute_action_function_error():
+def test_execute_action_function_error(mocker):
+    mocker.patch("wit_core.actions.actions.load_module", return_value="actions")
     with pytest.raises(AttributeError, match=r".*Not found action to execute*"):
         executed_function = execute_action_function("not_existent_function")
 
 
 def test_execute_template_function(mocker):
-    teste = mocker.patch("wit_core.core.process.execute_template_function", return_value="result template")
+    teste = mocker.patch("wit_core.templates.templates.execute_template_function", return_value="result template")
 
     assert teste("template_default") == "result template"
 
 
-def test_execute_template_function_error():
+def test_execute_template_function_error(mocker):
+    mocker.patch("wit_core.templates.templates.load_module", return_value="templates")
     with pytest.raises(AttributeError, match=r".*Not found template to execute*"):
         executed_function = execute_template_function("not_existent_template")
 

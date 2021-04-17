@@ -30,14 +30,14 @@ greet:
         text: "Hello, there!"
 
 temperature_set:
-    action: custom_action
+    action: action_temperature
     response:
         text: "The temperature was changed to {action_return}"
 
 order_pizza:
-    action: custom_action
+    action: action_pizza
     response:
-        template: custom_template
+        template: template_pizza
 ```
 
 ### Actions
@@ -55,11 +55,11 @@ The **resource** parameter allows accessing the properties of the wit.ai respons
 
 #### **Resource properties:**
 
-#### `get_latest_message()`
+#### `get_latest_message`
 
 Returns the message sent by the user.
 
-#### `get_intent()`
+#### `get_intent`
 
 Returns the properties of the intent.
 

@@ -1,3 +1,5 @@
+import importlib.util
+import pathlib
 import yaml
 
 from ..decorators import dot_notation
@@ -15,3 +17,14 @@ def rename_entities_keys(dict_arg: dict) -> dict:
         dict_arg["entities"][new_name] = dict_arg["entities"].pop(i)
 
     return dict_arg
+
+
+def load_module(module_name, file_path):
+    module_name = str(pathlib.Path().absolute()) + "/" + module_name
+    file_path = module_name + "/" + file_path
+
+    spec = importlib.util.spec_from_file_location(module_name, file_path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+
+    return module

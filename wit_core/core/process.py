@@ -46,15 +46,15 @@ def process_domain(x: tuple, resource: dict) -> str:
 
 
 def execute_function(module: str, func, arg=None) -> Any:
-    module = utils.load_module(module, module + ".py")
+    module_loaded = utils.load_module(module, module + ".py")
 
-    if getattr(module, func, None) is None:
+    if getattr(module_loaded, func, None) is None:
         raise AttributeError("Not found function to execute: " + module)
 
     try:
         if not arg:
-            return getattr(module, func)()
+            return getattr(module_loaded, func)()
         else:
-            return getattr(module, func)(arg)
+            return getattr(module_loaded, func)(arg)
     except Exception as error:
         return error

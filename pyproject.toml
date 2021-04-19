@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "wit-core"
-version = "0.1.1"
+version = "0.1.2"
 description = "Response processor for wit.ai"
 authors = ["Lucas Oliveira <ls.oliveiras.santos@gmail.com>"]
 repository = "https://github.com/LucasOliveiraS/wit-core"

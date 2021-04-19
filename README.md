@@ -10,7 +10,7 @@ Handle your intents by defining actions and responses.
 
 - Python 3.6+
 
-wheel package
+wheel package.
 
 ```bash
 pip install wheel

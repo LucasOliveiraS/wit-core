@@ -1,4 +1,5 @@
-from wit_core.core.domain import get_entity, get_intent, match_domain, search_intent, prepare_resource, resource_interface, response_text, get_latest_message
+from wit_core.core.domain import get_entity, get_intent, match_domain, search_intent, \
+    prepare_resource, resource_interface, response_text, get_latest_message, get_trait
 
 
 def test_search_intent(mocked_domain):
@@ -57,10 +58,22 @@ def test_get_latest_message(mocked_resource):
     assert latest_message == "turn the temperature to 62 degrees"
 
 
+def test_get_latest_message_should_return_none():
+    latest_message = get_latest_message({"resource":{"latest_message":{}}})
+
+    assert latest_message == None
+
+
 def test_get_intent(mocked_resource):
     intent = get_intent(mocked_resource())
 
     assert list(intent.keys()) == ["id", "name", "confidence"]
+
+
+def test_get_intent_should_return_none():
+    intent = get_intent({"resource":{"latest_message":{"intents": []}}})
+
+    assert intent == None
 
 
 def test_get_entity(mocked_resource):
@@ -69,10 +82,22 @@ def test_get_entity(mocked_resource):
     assert list(entity("wit$temperature").keys())== ["id", "name", "role", "start", "end", "body", "confidence", "entities", "unit", "type", "value"]
 
 
-def get_trait(mocked_resource):
+def test_get_entity_should_return_none(mocked_resource):
+    entity = get_entity({"resource":{"latest_message":{"entities": []}}})
+
+    assert entity("entity") == None
+
+
+def test_get_trait(mocked_resource):
     traits = get_trait(mocked_resource())
 
     assert list(traits("test").keys()) == ["value"]
+
+
+def test_get_trait_should_return_none():
+    traits = get_trait({"resource":{"latest_message":{"traits": []}}})
+
+    assert traits("trait") == None
 
 
 def test_response_text():

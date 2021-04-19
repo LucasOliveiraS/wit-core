@@ -1,6 +1,6 @@
 # wit-core
 
-wit-core is a message processor for [wit.ai](wit.ai)
+wit-core is a message processor for [wit.ai](wit.ai).
 
 Handle your intents by defining actions and responses.
 
@@ -9,6 +9,12 @@ Handle your intents by defining actions and responses.
 ### Prerequisites
 
 - Python 3.6+
+
+wheel package
+
+```bash
+pip install wheel
+```
 
 ### Instalation
 

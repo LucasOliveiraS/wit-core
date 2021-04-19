@@ -1,9 +1,8 @@
+from typing import Any
 from pathlib import Path
 
 from .domain import search_intent, match_domain, prepare_resource, \
     resource_interface, response_text
-from ..actions.actions import execute_action_function
-from ..templates.templates import execute_template_function
 from ..chatbot import get_user_input
 from . import utils
 
@@ -34,13 +33,28 @@ def process_domain(x: tuple, resource: dict) -> str:
     action_domain = x[0]
     response_domain = x[1]
 
-    result_action = execute_action_function(action_domain, resource)
+    result_action = execute_function("action", action_domain, resource)
 
     if "text" in response_domain:
         return response_text(response_domain["text"], result_action)
 
     if "template" in response_domain:
-        result_template = execute_template_function(
-            response_domain["template"], result_action)
+        result_template = execute_function(
+            "template", response_domain["template"], result_action)
 
         return result_template
+
+
+def execute_function(module: str, func, arg=None) -> Any:
+    module = utils.load_module(module, module + ".py")
+
+    if getattr(module, func, None) is None:
+        raise AttributeError("Not found function to execute: " + module)
+
+    try:
+        if not arg:
+            return getattr(module, func)()
+        else:
+            return getattr(module, func)(arg)
+    except Exception as error:
+        return error

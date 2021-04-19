@@ -49,7 +49,7 @@ def resource_interface(resource):
 
 
 def get_latest_message(resource: dict) -> str:
-    if resource["resource"]["latest_message"]:
+    if "latest_message" in resource["resource"]:
         return resource["resource"]["latest_message"]["text"]
     else:
         return None
@@ -57,7 +57,7 @@ def get_latest_message(resource: dict) -> str:
 
 @dot_notation
 def get_intent(resource: dict) -> dict:
-    if resource["resource"]["latest_message"]["intents"]:
+    if "intents" in resource["resource"]["latest_message"]:
         return resource["resource"]["latest_message"]["intents"][0]
     else:
         return None
@@ -66,7 +66,7 @@ def get_intent(resource: dict) -> dict:
 def get_entity(resource: dict):
     @dot_notation
     def execute(entity_name: str) -> dict:
-        if resource["resource"]["latest_message"]["entities"][entity_name]:
+        if entity_name in resource["resource"]["latest_message"]["entities"]:
             return (resource["resource"]["latest_message"]
                     ["entities"][entity_name][0])
         else:
@@ -78,8 +78,7 @@ def get_entity(resource: dict):
 def get_trait(resource: dict):
     @dot_notation
     def execute(trait_name: str) -> dict:
-        if (resource["resource"]["latest_message"]
-                ["traits"][trait_name]):
+        if trait_name in resource["resource"]["latest_message"]["traits"]:
             return (resource["resource"]["latest_message"]
                     ["traits"][trait_name][0])
         else:

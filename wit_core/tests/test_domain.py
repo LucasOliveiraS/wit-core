@@ -59,7 +59,7 @@ def test_get_latest_message(mocked_resource):
 
 
 def test_get_latest_message_should_return_none():
-    latest_message = get_latest_message({"resource":{"latest_message":{}}})
+    latest_message = get_latest_message({"resource":{}})
 
     assert latest_message == None
 
@@ -71,7 +71,7 @@ def test_get_intent(mocked_resource):
 
 
 def test_get_intent_should_return_none():
-    intent = get_intent({"resource":{"latest_message":{"intents": []}}})
+    intent = get_intent({"resource":{"latest_message":{}}})
 
     assert intent == None
 
@@ -83,7 +83,7 @@ def test_get_entity(mocked_resource):
 
 
 def test_get_entity_should_return_none(mocked_resource):
-    entity = get_entity({"resource":{"latest_message":{"entities": []}}})
+    entity = get_entity({"resource":{"latest_message":{"entities": {"wit$temperature": [{}]}}}})
 
     assert entity("entity") == None
 

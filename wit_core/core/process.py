@@ -33,14 +33,14 @@ def process_domain(x: tuple, resource: dict) -> str:
     action_domain = x[0]
     response_domain = x[1]
 
-    result_action = execute_function("action", action_domain, resource)
+    result_action = execute_function("actions", action_domain, resource)
 
     if "text" in response_domain:
         return response_text(response_domain["text"], result_action)
 
     if "template" in response_domain:
         result_template = execute_function(
-            "template", response_domain["template"], result_action)
+            "templates", response_domain["template"], result_action)
 
         return result_template
 

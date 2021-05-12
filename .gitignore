@@ -16,3 +16,8 @@ ENV/
 
 # Build
 dist
+
+# Live test
+actions
+templates
+domain.yaml

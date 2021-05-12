@@ -1,5 +1,6 @@
 from typing import Any
 from pathlib import Path
+from loguru import logger
 
 from .domain import search_intent, match_domain, prepare_resource, \
     resource_interface, response_text
@@ -45,16 +46,14 @@ def process_domain(x: tuple, resource: dict) -> str:
         return result_template
 
 
+@logger.catch
 def execute_function(module: str, func, arg=None) -> Any:
     module_loaded = utils.load_module(module, module + ".py")
 
     if getattr(module_loaded, func, None) is None:
         raise AttributeError("Not found function to execute: " + module)
 
-    try:
-        if not arg:
-            return getattr(module_loaded, func)()
-        else:
-            return getattr(module_loaded, func)(arg)
-    except Exception as error:
-        return error
+    if not arg:
+        return getattr(module_loaded, func)()
+    else:
+        return getattr(module_loaded, func)(arg)

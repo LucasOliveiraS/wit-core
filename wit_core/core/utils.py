@@ -7,8 +7,11 @@ from ..decorators import dot_notation
 
 @dot_notation
 def load_yaml(file: str) -> dict:
-    file = open(file, 'r')
-    return yaml.load(file, Loader=yaml.FullLoader)
+    try:
+        file = open(file, "r")
+        return yaml.load(file, Loader=yaml.FullLoader)
+    except FileNotFoundError:
+        print("Not found file: " + file)
 
 
 def rename_entities_keys(dict_arg: dict) -> dict:

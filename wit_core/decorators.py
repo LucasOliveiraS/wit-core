@@ -8,10 +8,10 @@ class dotdict(dict):
 
 
 def dot_notation(func):
-    def wraper(*args, **kwargs):
+    def wrapper(*args, **kwargs):
         try:
             return dotdict(func(*args, **kwargs))
         except TypeError:
             return None
 
-    return wraper
+    return wrapper

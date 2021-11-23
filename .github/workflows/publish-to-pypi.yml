@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Install dependencies
+      run: sudo apt-get install -y python-openssl
     - name: Build and publish to pypi
       uses: JRubics/poetry-publish@v1
       with:

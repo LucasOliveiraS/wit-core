@@ -33,5 +33,6 @@ async def message(message: Message):
     try:
         response = process_intent(message.message)
         return {"res": response}
-    except Exception:
-        raise HTTPException(status_code=500, detail="Error processing message")
+    except Exception as error:
+        raise HTTPException(
+            status_code=500, detail="Error processing message" + str(error))

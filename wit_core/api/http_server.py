@@ -35,4 +35,6 @@ async def message(message: Message):
         return {"res": response}
     except Exception as error:
         raise HTTPException(
-            status_code=500, detail="Error processing message" + str(error))
+            status_code=500,
+            detail="Error processing message" + str(error)
+        )

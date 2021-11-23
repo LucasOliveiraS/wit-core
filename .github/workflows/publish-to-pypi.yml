@@ -9,10 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Install dependencies
-      run: sudo apt-get install -y python-openssl
     - name: Build and publish to pypi
-      uses: JRubics/poetry-publish@v1
+      uses: coveooss/pypi-publish-with-poetry@v1.0.0
       with:
-        python_version: '3.8.0'
-        pypi_token: ${{ secrets.PYPI_API_TOKEN }}
+        project-name: wit-core
+        pypi-token: ${{ secrets.PYPI_API_TOKEN }}
